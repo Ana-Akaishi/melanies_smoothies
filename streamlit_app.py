@@ -10,7 +10,6 @@ helpful_links = [
     "https://docs.snowflake.com/en/release-notes/streamlit-in-snowflake"
 ]
 
-
 # Write directly to the app
 st.title("Customize Your Smoothie ")
 st.write("Choose the fruits you want in your custom Smmoothie!")
@@ -23,13 +22,7 @@ cnx = st.connection("snowflake")
 session = cnx.session(
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 # st.dataframe(data=my_dataframe, use_container_width=True)
-
-ingredients_list = st.multiselect(
-    'Choose up to 5 ingredients:'
-    , my_dataframe
-    , max_selections=5
-)
-
+ingredients_list = st.multiselect('Choose up to 5 ingredients:',my_dataframe,max_selections=5)
     
 if ingredients_list:
 # Create the INGREDIENTS_STRING Variable
