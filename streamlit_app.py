@@ -49,8 +49,7 @@ if ingredients_list:
     # st.write(ingredients_string)
 
     # Build a SQL Insert Statement & Test It
-    my_insert_stmt = """ insert into smoothies.public.orders (NAME_ON_ORDER, INGREDIENTS)
-                values ('""" + ingredients_string + """', '"""+name_on_order+"""')"""
+    my_insert_stmt = f"""INSERT INTO smoothies.public.orders (customer_name, ingredients) VALUES ('{name_on_order}', '{ingredients_string}')"""
 
     # st.write(my_insert_stmt)
     # st.stop()
@@ -58,7 +57,7 @@ if ingredients_list:
 
     # This if statement will depend if you clicked the submit order button
     if time_to_insert:
-        session.sql(my_insert_stmt).bind(NAME_ON_ORDER).bind(ingredients_string).collect()
+        session.sql(my_insert_stmt).collect()
 
         st.success('Your Smoothie is ordered, '+name_on_order+'!', icon='✅')
 
