@@ -49,9 +49,8 @@ if ingredients_list:
     # st.write(ingredients_string)
 
     # Build a SQL Insert Statement & Test It
-    my_insert_stmt = f"""INSERT INTO smoothies.public.orders (customer_name, ingredients) VALUES ('{name_on_order}', '{ingredients_string}')"""
-
-    # st.write(my_insert_stmt)
+    my_insert_stmt = """ insert into smoothies.public.orders (NAME_ON_ORDER, INGREDIENTS)
+                values ('"""+name_on_order+"""' , '""" + ingredients_string + """')"""    # st.write(my_insert_stmt)
     # st.stop()
     time_to_insert = st.button('Submit Order')
 
